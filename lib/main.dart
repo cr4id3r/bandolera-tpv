@@ -1,9 +1,9 @@
-import 'package:escuelajudy_tpv/screens/cash_screen.dart';
-import 'package:escuelajudy_tpv/screens/categories_screen.dart';
-import 'package:escuelajudy_tpv/screens/home_screen.dart';
-import 'package:escuelajudy_tpv/screens/login_screen.dart';
-import 'package:escuelajudy_tpv/screens/products_screen.dart';
-import 'package:escuelajudy_tpv/utils/user_utils.dart';
+import 'package:bandolera_tpv/screens/cash_screen.dart';
+import 'package:bandolera_tpv/screens/categories_screen.dart';
+import 'package:bandolera_tpv/screens/home_screen.dart';
+import 'package:bandolera_tpv/screens/login_screen.dart';
+import 'package:bandolera_tpv/screens/products_screen.dart';
+import 'package:bandolera_tpv/utils/user_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

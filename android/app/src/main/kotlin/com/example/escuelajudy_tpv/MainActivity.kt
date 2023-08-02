@@ -1,4 +1,4 @@
-package com.example.escuelajudy_tpv
+package com.example.bandolera_tpv
 
 import io.flutter.embedding.android.FlutterActivity
 

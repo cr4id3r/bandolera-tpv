@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:escuelajudy_tpv/utils/categories_utils.dart';
+import 'package:bandolera_tpv/utils/categories_utils.dart';
 import 'package:http/http.dart' as http;
 
 import 'constants.dart';
