@@ -108,9 +108,19 @@ class _TPVScreenState extends State<TPVScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(product.name),
+                              Align( // Agregamos Align para centrar el texto horizontalmente
+                                alignment: Alignment.center,
+                                child: Text(
+                                  product.name,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                               SizedBox(height: 8),
-                              Text(product.price.toString()),
+                              Text(product.price.toString() + '€'),
                             ],
                           ),
                         ),

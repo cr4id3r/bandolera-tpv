@@ -74,44 +74,56 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return BaseLayout(
       child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Welcome to the products!',
-                style: TextStyle(fontSize: 24),
-              ),
-              ElevatedButton(
-                onPressed: showAddProductDialog,
-                child: Text('Añadir producto'),
-              ),
-              ElevatedButton(
-                onPressed: fetchProducts,
-                child: Text('Actualizar productos'),
-              ),
-              SizedBox(height: 16),
-              DataTable(
-                columns: [
-                  DataColumn(label: Text('Nombre')),
-                  DataColumn(label: Text('Precio')),
-                  DataColumn(label: Text('')),
-                ],
-                rows: products.map((product) {
-                  return DataRow(
-                    cells: [
-                      DataCell(Text(product.name)),
-                      DataCell(Text(product.price.toString())),
-                      DataCell(ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Editar'),
-                      )),
-                    ],
-                  );
-                }).toList(),
-              ),
-            ],
-          ),
+        body: ListView(
+          padding: EdgeInsets.all(40),
+          children: [
+            Text(
+              'Listado de productos',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 35),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  width: 350, // Ancho máximo del botón
+                  child: ElevatedButton(
+                    onPressed: showAddProductDialog,
+                    child: Text('Añadir producto'),
+                  ),
+                ),
+                SizedBox(
+                  width: 350, // Ancho máximo del botón
+                  child: ElevatedButton(
+                    onPressed: fetchProducts,
+                    child: Text('Actualizar productos'),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+            DataTable(
+              columns: const [
+                DataColumn(label: Text('Nombre')),
+                DataColumn(label: Text('Categorias')),
+                DataColumn(label: Text('Precio')),
+                DataColumn(label: Text('')),
+              ],
+              rows: products.map((product) {
+                return DataRow(
+                  cells: [
+                    DataCell(Text(product.name)),
+                    DataCell(Text(product.categories!.map((category) => category.name).join(', ') )),
+                    DataCell(Text(product.price.toString())),
+                    DataCell(ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Editar'),
+                    )),
+                  ],
+                );
+              }).toList(),
+            ),
+          ],
         ),
       ),
     );

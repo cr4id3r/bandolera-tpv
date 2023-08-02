@@ -11,7 +11,23 @@ class HomeScreen extends StatelessWidget {
       // Utilizando BaseLayout
       child: Scaffold(
         body: Center(
-          child: Image.network('https://picsum.photos/200')
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Bandolera TPV',
+                style: TextStyle(
+                  fontSize: 50, // Tamaño de fuente más grande (puedes ajustarlo según tus preferencias)
+                  fontWeight: FontWeight.bold, // Opcional: para hacerlo más negrita
+                ),
+              ),
+              Text('Powered by Acabeza.es',
+                style: TextStyle(
+                  fontSize: 25
+                )
+              ),
+            ],
+          ),
         ),
       ),
     );

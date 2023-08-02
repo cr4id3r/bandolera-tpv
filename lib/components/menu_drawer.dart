@@ -23,7 +23,13 @@ class MenuDrawer extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.blue,
         ),
-        child: Image.network('https://picsum.photos/200'),
+        child: Text(
+          'Bandolera TPV (Powered by Acabeza.es)',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        )
       ),
       for (var entry in menuOptions.entries)
         ListTile(
