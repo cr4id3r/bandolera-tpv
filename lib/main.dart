@@ -3,11 +3,12 @@ import 'package:bandolera_tpv/screens/categories_screen.dart';
 import 'package:bandolera_tpv/screens/home_screen.dart';
 import 'package:bandolera_tpv/screens/login_screen.dart';
 import 'package:bandolera_tpv/screens/products_screen.dart';
+import 'package:bandolera_tpv/utils/constants.dart';
 import 'package:bandolera_tpv/utils/user_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'screens/tpv_screen.dart';
+import 'screens/tpv/tpv_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ void main() {
     DeviceOrientation.landscapeRight,
   ]).then((value) => runApp(MyApp()));
 }
+
 
 class MyApp extends StatelessWidget {
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'TPV App',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: customPrimaryColor,
             ),
             home: HomeScreen(),
             routes: {

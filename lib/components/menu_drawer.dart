@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
+
 class MenuDrawer extends StatelessWidget {
   final Map<String, String> menuOptions = {
     'Inicio': '/',
@@ -21,7 +23,7 @@ class MenuDrawer extends StatelessWidget {
     return [
       DrawerHeader(
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: customPrimaryColor[900],
         ),
         child: Text(
           'Bandolera TPV (Powered by Acabeza.es)',
