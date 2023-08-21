@@ -6,11 +6,14 @@ import 'constants.dart';
 
 List<Product> availableProducts = [];
 
-Future<List<Product>> fetchAvailableProducts(Function setStateCallback) async {
+Future<List<Product>> fetchAvailableProducts(Function setStateCallback, {bool onlyEnabled=false}) async {
   final response = await http.get(Uri.parse('$TPV_SERVER_URL/products/'));
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
     final products = List<Product>.from(data.map((product) => Product.fromJson(product)));
+    if (onlyEnabled) {
+      products.removeWhere((product) => product.enabled == false);
+    }
     setStateCallback(products);
     return products;
   } else {
@@ -34,20 +37,35 @@ Future<void> createProduct(String name, double price, List<Category>? categories
   }
 }
 
+Future<void> disableProduct(int product_id) async {
+  final response = await http.post(
+    Uri.parse('$TPV_SERVER_URL/products/disable'),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({'id': product_id}),
+  );
+  if (response.statusCode == 200) {
+    print('Product disabled');
+  } else {
+    throw Exception('Failed to disable product');
+  }
+}
+
 
 class Product {
   final String name;
   final double price;
   final List<Category>? categories;
   final int? id;
+  final bool? enabled;
 
-  Product({required this.name, required this.price, this.categories, this.id});
+  Product({required this.name, required this.price, this.categories, this.id, this.enabled});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       price: json['price']?.toDouble() ?? 0.0,
+      enabled: json['enabled'] ?? true,
       categories: json['categories'] != null
           ? List<Category>.from(
               json['categories']

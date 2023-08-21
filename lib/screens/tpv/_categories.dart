@@ -24,7 +24,7 @@ class CategoriesColumn extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final category = categories[index];
             return ListTile(
-              title: Text(category.name),
+              title: Text(category.name, style: TextStyle(fontSize: 15)),
               onTap: () {
                 if (onCategorySelected != null) {
                   onCategorySelected!(category);

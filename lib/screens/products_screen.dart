@@ -1,10 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import '../base_layout.dart';
 import '../components/add_product_dialog.dart';
 import '../utils/categories_utils.dart';
-import '../utils/constants.dart';
 import '../utils/produts_utils.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -24,7 +21,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   void initState() {
     super.initState();
-    fetchProducts();
+    fetchAvailableProducts(_setAvailableProducts);
     getAvailableCategories(_setCategories);
   }
 
@@ -34,15 +31,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
-  Future<void> fetchProducts() async {
-    final response = await http.get(Uri.parse('$TPV_SERVER_URL/products/'));
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      setState(() {
-        products = List<Product>.from(
-            data.map((product) => Product.fromJson(product)));
-      });
-    }
+  void _setAvailableProducts(List<Product> productsList) {
+    setState(() {
+      products = productsList;
+    });
   }
 
   Future<void> showAddProductDialog() async {
@@ -95,7 +87,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 SizedBox(
                   width: 350, // Ancho máximo del botón
                   child: ElevatedButton(
-                    onPressed: fetchProducts,
+                    onPressed: () {
+                      fetchAvailableProducts(_setAvailableProducts);
+                    },
                     child: Text('Actualizar productos'),
                   ),
                 ),
@@ -115,10 +109,22 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     DataCell(Text(product.name)),
                     DataCell(Text(product.categories!.map((category) => category.name).join(', ') )),
                     DataCell(Text(product.price.toString())),
-                    DataCell(ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Editar'),
-                    )),
+                    DataCell(
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.edit),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                disableProduct(product.id!);
+                              },
+                              icon: const Icon(Icons.delete)
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 );
               }).toList(),
