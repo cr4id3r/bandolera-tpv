@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(
+    return const BaseLayout(
       // Utilizando BaseLayout
       child: Scaffold(
         body: Center(
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Bandolera TPV',
+                'Bandida TPV',
                 style: TextStyle(
                   fontSize: 50, // Tamaño de fuente más grande (puedes ajustarlo según tus preferencias)
                   fontWeight: FontWeight.bold, // Opcional: para hacerlo más negrita

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:bandolera_tpv/utils/categories_utils.dart';
+import 'package:bandida_tpv/utils/categories_utils.dart';
 import 'package:http/http.dart' as http;
 
 import 'constants.dart';
@@ -40,6 +40,19 @@ Future<void> createProduct(String name, double price, List<Category>? categories
 Future<void> disableProduct(int product_id) async {
   final response = await http.post(
     Uri.parse('$TPV_SERVER_URL/products/disable'),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({'id': product_id}),
+  );
+  if (response.statusCode == 200) {
+    print('Product disabled');
+  } else {
+    throw Exception('Failed to disable product');
+  }
+}
+
+Future<void> enableProduct(int product_id) async {
+  final response = await http.post(
+    Uri.parse('$TPV_SERVER_URL/products/enable'),
     headers: {'Content-Type': 'application/json'},
     body: jsonEncode({'id': product_id}),
   );

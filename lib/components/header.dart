@@ -14,7 +14,7 @@ class HeaderComponent extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Row(
         children: [
-          Text('Bandolera TPV (Powered by Acabeza.es)'),
+          Text('Bandida TPV (Powered by Acabeza.es)'),
         ],
       )
     );

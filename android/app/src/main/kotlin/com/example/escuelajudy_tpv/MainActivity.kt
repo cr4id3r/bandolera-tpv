@@ -1,4 +1,4 @@
-package com.example.bandolera_tpv
+package com.example.bandida_tpv
 
 import io.flutter.embedding.android.FlutterActivity
 

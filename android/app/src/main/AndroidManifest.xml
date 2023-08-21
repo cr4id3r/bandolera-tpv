@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bandolera_tpv">
+    package="com.example.bandida_tpv">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="Bandolera TPV acabeza.es"
+        android:label="Bandida TPV acabeza.es"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

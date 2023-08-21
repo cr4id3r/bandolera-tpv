@@ -37,7 +37,7 @@ class _TPVScreenState extends State<TPVScreen> {
   @override
   void initState() {
     super.initState();
-    fetchAvailableProducts(_setAvailableProducts);
+    fetchAvailableProducts(_setAvailableProducts, onlyEnabled: true);
     getAvailableCategories(_setAvailableCategories);
   }
 
@@ -76,6 +76,7 @@ class _TPVScreenState extends State<TPVScreen> {
   void clearAllProductsFromCart() {
     setState(() {
       selectedProducts.clear();
+      productsInCart.clear();
     });
   }
 

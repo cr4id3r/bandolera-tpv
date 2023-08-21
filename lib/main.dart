@@ -1,10 +1,10 @@
-import 'package:bandolera_tpv/screens/cash_screen.dart';
-import 'package:bandolera_tpv/screens/categories_screen.dart';
-import 'package:bandolera_tpv/screens/home_screen.dart';
-import 'package:bandolera_tpv/screens/login_screen.dart';
-import 'package:bandolera_tpv/screens/products_screen.dart';
-import 'package:bandolera_tpv/utils/constants.dart';
-import 'package:bandolera_tpv/utils/user_utils.dart';
+import 'package:bandida_tpv/screens/cash_screen.dart';
+import 'package:bandida_tpv/screens/categories_screen.dart';
+import 'package:bandida_tpv/screens/home_screen.dart';
+import 'package:bandida_tpv/screens/login_screen.dart';
+import 'package:bandida_tpv/screens/products_screen.dart';
+import 'package:bandida_tpv/utils/constants.dart';
+import 'package:bandida_tpv/utils/user_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

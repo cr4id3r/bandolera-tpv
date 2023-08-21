@@ -1,4 +1,4 @@
-# bandolera_tpv
+# bandida_tpv
 
 Escuela Judy TPV Tablet
 

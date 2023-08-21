@@ -116,12 +116,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             onPressed: () {},
                             icon: const Icon(Icons.edit),
                           ),
-                          IconButton(
+                          if (product.enabled == true)
+                            IconButton(
                               onPressed: () {
                                 disableProduct(product.id!);
                               },
                               icon: const Icon(Icons.delete)
-                          ),
+                            ),
+                          if (product.enabled == false)
+                            IconButton(
+                                onPressed: () {
+                                  disableProduct(product.id!);
+                                },
+                                icon: const Icon(Icons.restore_outlined)
+                            ),
                         ],
                       ),
                     ),

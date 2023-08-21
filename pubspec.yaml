@@ -1,9 +1,9 @@
-name: bandolera_tpv
-description: Escuela Judy TPV Tablet
+name: bandida_tpv
+description: Bandida TPV
 
 publish_to: 'none' 
 
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
   sdk: '>=2.18.2 <3.0.0'

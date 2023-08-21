@@ -26,7 +26,7 @@ class MenuDrawer extends StatelessWidget {
           color: customPrimaryColor[900],
         ),
         child: Text(
-          'Bandolera TPV (Powered by Acabeza.es)',
+          'Bandida TPV (Powered by Acabeza.es)',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
