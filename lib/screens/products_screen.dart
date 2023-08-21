@@ -126,7 +126,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           if (product.enabled == false)
                             IconButton(
                                 onPressed: () {
-                                  disableProduct(product.id!);
+                                  enableProduct(product.id!);
                                 },
                                 icon: const Icon(Icons.restore_outlined)
                             ),
