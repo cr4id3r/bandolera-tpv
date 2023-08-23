@@ -1,14 +1,15 @@
 import 'package:bandida_tpv/screens/cash_screen.dart';
 import 'package:bandida_tpv/screens/categories_screen.dart';
 import 'package:bandida_tpv/screens/home_screen.dart';
-import 'package:bandida_tpv/screens/login_screen.dart';
 import 'package:bandida_tpv/screens/products_screen.dart';
+import 'package:bandida_tpv/screens/users_screen.dart';
 import 'package:bandida_tpv/utils/constants.dart';
 import 'package:bandida_tpv/utils/user_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'screens/tpv/tpv_screen.dart';
+import 'screens/users/register_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,13 +33,15 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: customPrimaryColor,
             ),
-            home: HomeScreen(),
+            home: UsersScreen(),
             routes: {
+              '/register': (context) => RegisterScreen(),
+              '/home': (context) => HomeScreen(),
               '/tpv': (context) => TPVScreen(),
               '/products': (context) => ProductsScreen(),
               '/cash': (context) => CashScreen(),
               '/categories': (context) => CategoriesScreen(),
-              '/login': (context) => LoginScreen(),
+              '/login': (context) => UsersScreen(),
               // Agrega más rutas si es necesario
             },
           );
