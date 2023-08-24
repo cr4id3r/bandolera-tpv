@@ -44,9 +44,7 @@ class _UserScreenState extends State<UsersScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        final userState = context.read<UserState>();
-                        userState.loginUser(users[index]);
-                        Navigator.pushNamed(context, '/home');
+                        _showPasswordDialog(context, users[index]);
                       },
                       child: UserCard(
                         user: users[index],
@@ -94,4 +92,49 @@ class UserCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _showPasswordDialog(BuildContext context, User user) async {
+  String? enteredPassword;
+
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Ingresa la contraseña para ${user.name}'),
+        content: TextField(
+          obscureText: true,
+          onChanged: (value) {
+            enteredPassword = value;
+          },
+          decoration: InputDecoration(labelText: 'Contraseña'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () async {
+              final userLogin = await performLogin(user.username, enteredPassword!);
+              if (userLogin != null) {
+                final userState = context.read<UserState>();
+                userState.loginUser(userLogin);
+                Navigator.pushNamed(context, '/home');
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Contraseña incorrecta'),
+                  ),
+                );
+              }
+            },
+            child: Text('Iniciar sesión'),
+          ),
+        ],
+      );
+    },
+  );
 }
