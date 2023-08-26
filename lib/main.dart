@@ -1,3 +1,4 @@
+import 'package:bandida_tpv/screens/analytics_screen.dart';
 import 'package:bandida_tpv/screens/cash_screen.dart';
 import 'package:bandida_tpv/screens/categories_screen.dart';
 import 'package:bandida_tpv/screens/home_screen.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
               '/cash': (context) => CashScreen(),
               '/categories': (context) => CategoriesScreen(),
               '/login': (context) => UsersScreen(),
+              '/analytics': (context) => AnalyticScreen(),
               // Agrega más rutas si es necesario
             },
           );

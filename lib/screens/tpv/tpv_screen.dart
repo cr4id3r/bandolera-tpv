@@ -102,6 +102,10 @@ class _TPVScreenState extends State<TPVScreen> {
   Widget build(BuildContext context) {
     return BaseLayout(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text('TPV'),
+          automaticallyImplyLeading: false,
+        ),
         body: Row(
           children: [
             CategoriesColumn(

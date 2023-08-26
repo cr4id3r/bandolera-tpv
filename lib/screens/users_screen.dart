@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,11 +78,13 @@ class UserCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
-            child: Image.network(
-              user.imageUrl, // Replace with the actual image URL
-              fit: BoxFit.cover,
-              height: 100, // Adjust the image height as needed
-              width: double.infinity, // Make the image width take up the full width
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Image(
+                image: AssetImage('assets/icon/user_icon.png'),
+                fit: BoxFit.cover,
+                height: 100, // Adjust the image height as needed
+              ),
             ),
           ),
           const SizedBox(height: 20),

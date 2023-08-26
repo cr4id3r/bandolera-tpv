@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../base_layout.dart';
 import '../utils/cash_utils.dart';
 
 class CashScreen extends StatefulWidget {
@@ -20,24 +21,22 @@ class _CashScreenState extends State<CashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Arqueo'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Text(
-                'Realizar Arqueo',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              buildCashData(),
-            ],
-          )
+    return BaseLayout(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Arqueo'),
+          automaticallyImplyLeading: false,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                buildCashData(),
+              ],
+            )
+          ),
         ),
       ),
     );

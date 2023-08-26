@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/constants.dart';
+import '../utils/user_utils.dart';
 
 class MenuDrawer extends StatelessWidget {
   final Map<String, String> menuOptions = {
     'Inicio': '/',
     'TPV': '/tpv',
-    'Productos': '/products',
-    'Categorias': '/categories',
-    'Arqueos': '/cash',
+    'Productos': '/products'
   };
 
   final Map<String, String> menuOptionsAdmin = {
@@ -17,6 +17,7 @@ class MenuDrawer extends StatelessWidget {
     'Productos': '/products',
     'Categorias': '/categories',
     'Arqueos': '/cash',
+    'Analitica': '/analytics',
   };
 
   List<Widget> buildMenuOptions(BuildContext context) {
@@ -33,14 +34,35 @@ class MenuDrawer extends StatelessWidget {
           ),
         )
       ),
-      for (var entry in menuOptions.entries)
-        ListTile(
-          title: Text(entry.key),
-          onTap: () {
-            // Lógica para manejar la selección del menú
-            Navigator.pushNamed(context, entry.value);
-          },
-        ),
+      Consumer<UserState>(
+        builder: (context, userState, _) {
+          if (userState.loggedInUser?.category == 'admin') {
+            return Column(
+              children: [
+                for (var option in menuOptionsAdmin.keys)
+                  ListTile(
+                    title: Text(option),
+                    onTap: () {
+                      Navigator.pushNamed(context, menuOptionsAdmin[option]!);
+                    },
+                  ),
+              ],
+            );
+          } else {
+            return Column(
+              children: [
+                for (var option in menuOptions.keys)
+                  ListTile(
+                    title: Text(option),
+                    onTap: () {
+                      Navigator.pushNamed(context, menuOptions[option]!);
+                    },
+                  ),
+              ],
+            );
+          }
+        }
+      )
     ];
   }
 

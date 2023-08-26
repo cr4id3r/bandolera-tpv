@@ -39,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 }
 
-class RegisterFormWidget extends StatelessWidget {
+class RegisterFormWidget extends StatefulWidget {
   const RegisterFormWidget({
     super.key,
     required GlobalKey<FormState> formKey,
@@ -54,14 +54,21 @@ class RegisterFormWidget extends StatelessWidget {
   final TextEditingController nameController;
 
   @override
+  State<RegisterFormWidget> createState() => _RegisterFormWidgetState();
+}
+
+class _RegisterFormWidgetState extends State<RegisterFormWidget> {
+  String selectedCategory = 'user';
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-    key: _formKey,
+    key: widget._formKey,
     child: Column(
       children: [
         // Create a text field for the username
         TextFormField(
-          controller: nameController,
+          controller: widget.nameController,
           decoration: const InputDecoration(
             labelText: 'Nombre de usuario',
           ),
@@ -73,7 +80,7 @@ class RegisterFormWidget extends StatelessWidget {
           },
         ),
         TextFormField(
-          controller: usernameController,
+          controller: widget.usernameController,
           decoration: const InputDecoration(
             labelText: 'Identificador de usuario',
           ),
@@ -86,7 +93,7 @@ class RegisterFormWidget extends StatelessWidget {
         ),
         // Create a text field for the password
         TextFormField(
-          controller: passwordController,
+          controller: widget.passwordController,
           decoration: const InputDecoration(
             labelText: 'Contraseña',
           ),
@@ -114,15 +121,20 @@ class RegisterFormWidget extends StatelessWidget {
               return 'Por favor, selecciona una categoría';
             }
             return null;
-          }, onChanged: (String? value) {  },
+          }, onChanged: (String? value) {
+            setState(() {
+              selectedCategory = value!;
+            });
+
+        },
         ),
         const SizedBox(height: 30),
         // Create a button to submit the form
         ElevatedButton(
           onPressed: () {
             // Validate the form
-            if (_formKey.currentState!.validate()) {
-              createUser(nameController.text, usernameController.text, passwordController.text, 'user');
+            if (widget._formKey.currentState!.validate()) {
+              createUser(widget.nameController.text, widget.usernameController.text, widget.passwordController.text, selectedCategory);
               // If the form is valid, display a snackbar
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Procesando datos')),
